@@ -1,42 +1,129 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>星汐 · 全息闪卡</title>
-  <style>
-    :root { color-scheme: dark; --bg:#0b0714; --fg:#f4eefc; --muted:#b7a7d4; --gold:#ecc46e; }
-    * { box-sizing: border-box; }
-    body { margin:0; min-height:100vh; font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: radial-gradient(1200px 600px at 50% -10%, #2a1850, var(--bg)); color: var(--fg); }
-    main { max-width: 920px; margin: 0 auto; padding: 48px 20px 80px; }
-    h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 8px; letter-spacing: 0.04em; }
-    .sub { color: var(--muted); margin: 0 0 36px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
-    a.card { display:block; text-decoration:none; color:inherit; border:1px solid rgba(236,196,110,.28);
-      border-radius: 18px; overflow:hidden; background: rgba(255,255,255,.03);
-      transition: transform .2s ease, border-color .2s ease; }
-    a.card:hover { transform: translateY(-4px); border-color: var(--gold); }
-    a.card img { display:block; width:100%; aspect-ratio: 2/3; object-fit: cover; background:#140c22; }
-    a.card .meta { padding: 14px 16px 18px; }
-    a.card .meta strong { display:block; font-size:1.05rem; }
-    a.card .meta span { color: var(--muted); font-size: .9rem; }
-  </style>
-</head>
-<body>
-  <main>
-    <h1>星汐 · 全息闪卡</h1>
-    <p class="sub">手机打开后点进卡片，倾斜屏幕或滑动即可看全息效果。</p>
-    <div class="grid">
-      <a class="card" href="./002/">
-        <img src="./002/hero.png" alt="星汐 002" />
-        <div class="meta"><strong>星汐 002</strong><span>002 / 100 · 星辉牵绊</span></div>
-      </a>
-      <a class="card" href="./003/">
-        <img src="./003/hero.png" alt="星汐 003" />
-        <div class="meta"><strong>星汐 003</strong><span>003 / 100 · 星辉牵绊</span></div>
-      </a>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#0b0a12" />
+    <title>星汐 · ホログラフィックカード</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b0a12;
+        --fg: #f7f1e4;
+        --muted: #b8aec8;
+        --gold: #ecc46e;
+        --card: #17141f;
+        --line: rgba(236, 196, 110, 0.35);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic", sans-serif;
+        background:
+          radial-gradient(1200px 600px at 50% -10%, rgba(140, 90, 255, 0.22), transparent 60%),
+          radial-gradient(800px 500px at 80% 100%, rgba(60, 180, 255, 0.12), transparent 55%),
+          var(--bg);
+        color: var(--fg);
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 48px 20px 72px;
+      }
+      header { text-align: center; margin-bottom: 40px; }
+      .brand {
+        letter-spacing: 0.28em;
+        font-size: 12px;
+        color: var(--gold);
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+      h1 {
+        margin: 0 0 14px;
+        font-weight: 700;
+        font-size: clamp(28px, 5vw, 40px);
+        letter-spacing: 0.08em;
+      }
+      .sub {
+        margin: 0 auto;
+        max-width: 36em;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+      a.card {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+        background: linear-gradient(180deg, #1d1828, var(--card));
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        overflow: hidden;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      }
+      a.card:hover, a.card:focus-visible {
+        transform: translateY(-4px);
+        border-color: rgba(236, 196, 110, 0.7);
+        box-shadow: 0 24px 60px rgba(90, 40, 180, 0.28);
+        outline: none;
+      }
+      .thumb {
+        aspect-ratio: 2 / 3;
+        background: #000 center/cover no-repeat;
+        border-bottom: 1px solid var(--line);
+      }
+      .meta { padding: 18px 18px 22px; }
+      .meta h2 {
+        margin: 0 0 8px;
+        font-size: 20px;
+        letter-spacing: 0.06em;
+      }
+      .meta p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
+        letter-spacing: 0.04em;
+      }
+      footer {
+        margin-top: 48px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.12em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">WHITE ATELIER · 白相</div>
+        <h1>星汐 · ホログラフィックカード</h1>
+        <p class="sub">スマホでカードを開き、傾けるかスワイプするとホログラム効果が見られます。</p>
+      </header>
+      <section class="grid" aria-label="カード一覧">
+        <a class="card" href="./002/">
+          <div class="thumb" style="background-image:url('./002/hero.png')"></div>
+          <div class="meta">
+            <h2>星汐 002</h2>
+            <p>002 / 100 · 星輝の絆</p>
+          </div>
+        </a>
+        <a class="card" href="./003/">
+          <div class="thumb" style="background-image:url('./003/hero.png')"></div>
+          <div class="meta">
+            <h2>星汐 003</h2>
+            <p>003 / 100 · 星輝の絆</p>
+          </div>
+        </a>
+      </section>
+      <footer>光と影のあいだに、響きがある。 · PERSONAL ART COLLECTION</footer>
     </div>
-  </main>
-</body>
+  </body>
 </html>

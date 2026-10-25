@@ -883,7 +883,7 @@ dialog dd {
 @media (max-width: 760px) {
   .masthead { height: 56px; }
   .gallery { height: calc(100svh - 56px); min-height: 0; max-height: none; }
-  .stage { inset: 3% 3% 2%; }
+  .stage { inset: 0; }
   .artwork-bar { margin-top: 8px; }
 }
 

@@ -889,3 +889,10 @@ dialog dd {
 
 /* No visible focus frame around the card stage (shows up when tilting on touch) */
 .stage, .stage:focus, .stage:focus-visible { outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent; }
+
+/* Touch: card captures vertical drags (no pull-to-refresh / page scroll on the card) */
+html, body { overscroll-behavior-y: contain; }
+.stage, .stage canvas { touch-action: none !important; }
+@media (max-width: 760px) {
+  .gallery { height: calc(100svh - 120px); }
+}

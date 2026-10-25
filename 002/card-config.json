@@ -1,0 +1,32 @@
+{
+  "title": "星汐",
+  "subtitle": "星光使",
+  "technique": "星辉牵绊",
+  "tagline": "星光随视角流转",
+  "edition": "002 / 100",
+  "collection": "个人全息典藏",
+  "description": "星辰主题猫耳角色闪卡",
+  "assets": {
+    "subject": "./assets/subject.png",
+    "background": "./assets/background.png",
+    "text": "./assets/text.png",
+    "lineart": "./assets/lineart.png",
+    "effects": "./assets/effects.png",
+    "model": "./assets/card.glb"
+  },
+  "parameters": {
+    "subjectScale": 1.42,
+    "subjectDepth": 0.4,
+    "backgroundDepth": -0.25,
+    "effectsScale": 1,
+    "effectsDepth": 0.55,
+    "foil": 0.65
+  },
+  "safeArea": {
+    "scale": 1.12,
+    "offset": [
+      -0.06,
+      -0.085
+    ]
+  }
+}

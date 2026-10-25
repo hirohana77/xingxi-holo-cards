@@ -28755,7 +28755,7 @@ function resize() {
     return;
   const { clientWidth: width, clientHeight: height } = stage;
   const aspect = width / height;
-  const mobileFit = matchMedia("(max-width:760px)").matches; const halfHeight = (mobileFit ? Math.max(4.05, 2.78 / aspect) : Math.max(config.sourceMode === "relief" ? 6.25 : 5.45, 4.5 / aspect)) / zoom;
+  const mobileFit = matchMedia("(max-width:760px)").matches; const halfHeight = (mobileFit ? Math.max(4.75, 3.35 / aspect) : Math.max(config.sourceMode === "relief" ? 6.25 : 5.45, 4.5 / aspect)) / zoom;
   camera.left = -halfHeight * aspect;
   camera.right = halfHeight * aspect;
   camera.top = halfHeight;

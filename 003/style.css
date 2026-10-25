@@ -799,7 +799,7 @@ dialog dd {
   /* The depth switch turned .finish-cluster into the grid item, so the cluster — not
      .finish-control — has to own the second row on a phone. Without this the auto
      column claimed ~316px, squeezed the 1fr title column past the bar and wrapped
-     景深调整 one glyph per line (~114px of horizontal overflow at 390px). */
+     奥行き調整 one glyph per line (~114px of horizontal overflow at 390px). */
   .finish-cluster {
     grid-column: 1/-1;
     width: 100%;
@@ -879,20 +879,13 @@ dialog dd {
   }
 }
 
-/* Mobile: near-fullscreen card with ~3% safe margin; controls below on scroll */
-@media (max-width: 760px) {
-  .masthead { height: 56px; }
-  .gallery { height: calc(100svh - 56px); min-height: 0; max-height: none; }
-  .stage { inset: 0; }
-  .artwork-bar { margin-top: 8px; }
-}
-
-/* No visible focus frame around the card stage (shows up when tilting on touch) */
-.stage, .stage:focus, .stage:focus-visible { outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent; }
-
-/* Touch: card captures vertical drags (no pull-to-refresh / page scroll on the card) */
+/* Mobile UX patches retained for GitHub Pages */
 html, body { overscroll-behavior-y: contain; }
+.stage, .stage:focus, .stage:focus-visible { outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent; }
 .stage, .stage canvas { touch-action: none !important; }
 @media (max-width: 760px) {
-  .gallery { height: calc(100svh - 120px); }
+  .masthead { height: 56px; }
+  .gallery { height: calc(100svh - 120px); min-height: 0; max-height: none; }
+  .stage { inset: 0; }
+  .artwork-bar { margin-top: 8px; }
 }

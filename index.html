@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>星汐 · 全息闪卡</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0b0714; --fg:#f4eefc; --muted:#b7a7d4; --gold:#ecc46e; }
+    * { box-sizing: border-box; }
+    body { margin:0; min-height:100vh; font-family: system-ui, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #2a1850, var(--bg)); color: var(--fg); }
+    main { max-width: 920px; margin: 0 auto; padding: 48px 20px 80px; }
+    h1 { font-size: 1.75rem; font-weight: 700; margin: 0 0 8px; letter-spacing: 0.04em; }
+    .sub { color: var(--muted); margin: 0 0 36px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
+    a.card { display:block; text-decoration:none; color:inherit; border:1px solid rgba(236,196,110,.28);
+      border-radius: 18px; overflow:hidden; background: rgba(255,255,255,.03);
+      transition: transform .2s ease, border-color .2s ease; }
+    a.card:hover { transform: translateY(-4px); border-color: var(--gold); }
+    a.card img { display:block; width:100%; aspect-ratio: 2/3; object-fit: cover; background:#140c22; }
+    a.card .meta { padding: 14px 16px 18px; }
+    a.card .meta strong { display:block; font-size:1.05rem; }
+    a.card .meta span { color: var(--muted); font-size: .9rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>星汐 · 全息闪卡</h1>
+    <p class="sub">手机打开后点进卡片，倾斜屏幕或滑动即可看全息效果。</p>
+    <div class="grid">
+      <a class="card" href="./002/">
+        <img src="./002/hero.png" alt="星汐 002" />
+        <div class="meta"><strong>星汐 002</strong><span>002 / 100 · 星辉牵绊</span></div>
+      </a>
+      <a class="card" href="./003/">
+        <img src="./003/hero.png" alt="星汐 003" />
+        <div class="meta"><strong>星汐 003</strong><span>003 / 100 · 星辉牵绊</span></div>
+      </a>
+    </div>
+  </main>
+</body>
+</html>

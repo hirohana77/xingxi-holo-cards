@@ -28236,7 +28236,7 @@ float strength() { return abs(uFinish - 2.0) < 0.05 ? 0. : uFoil; }
 vec3 film(vec2 uv) {
   float phase = uv.x * .85 + uv.y * .55 + uView.x * 1.5 - uView.y * .9;
   if (uFinish > 2.5) {
-    // 烫金 (gold foil): warm gold laminate that shifts with the viewing angle.
+    // 金箔 (gold foil): warm gold laminate that shifts with the viewing angle.
     float hi = 0.5 + 0.5 * sin(phase * 6.28318);
     float glint = 0.5 + 0.5 * cos((phase + 0.25) * 6.28318);
     vec3 deep = vec3(.72, .50, .20);
@@ -28423,7 +28423,7 @@ async function init() {
   refreshIcons();
   const response = await fetch("./card-config.json");
   if (!response.ok)
-    throw Error("作品配置未找到");
+    throw Error("作品設定が見つかりません");
   config = await response.json();
   document.title = config.title + " · 白相";
   for (const [id, key] of [
@@ -28548,7 +28548,7 @@ async function init() {
       reliefLayers.text.push(ob);
   });
   if (!faces)
-    throw Error("卡片模型缺少正面材质");
+    throw Error("カードモデルに表面マテリアルがありません");
   root.updateMatrixWorld(true);
   for (const meshes of Object.values(reliefLayers))
     for (const mesh of meshes) {
@@ -28557,7 +28557,7 @@ async function init() {
       mesh.userData.baseScale = mesh.scale.clone();
     }
   if (config.sourceMode === "relief" && !reliefLayers.subject.length)
-    throw Error("缺少独立人物层，请重新生成模型");
+    throw Error("独立した人物レイヤーがありません。モデルを再生成してください");
   addShadow();
   const settingsHome = $("parameter-panel").parentElement;
   const responsiveSettings = () => {
@@ -28579,7 +28579,7 @@ async function init() {
   if (shaderErrors.length) {
     renderer.dispose();
     renderer.domElement.remove();
-    fallback3D(new Error("当前设备无法显示卡面材质"));
+    fallback3D(new Error("この端末ではカード面マテリアルを表示できません"));
     return;
   }
   $("loading").remove();
@@ -28621,7 +28621,7 @@ function fallback3D(error) {
     layer.className = "layer3d";
     const img = document.createElement("img");
     img.src = config.assets[name];
-    img.alt = config.title || "卡片";
+    img.alt = config.title || "カード";
     img.loading = "eager";
     layer.append(img);
     front.append(layer);
@@ -28690,8 +28690,8 @@ function fallback3D(error) {
     if (!b)
       return;
     b.setAttribute("aria-pressed", String(value));
-    b.setAttribute("aria-label", value ? "暂停旋转" : "自动旋转");
-    b.title = value ? "暂停旋转" : "自动旋转";
+    b.setAttribute("aria-label", value ? "回転を一時停止" : "自動回転");
+    b.title = value ? "回転を一時停止" : "自動回転";
     const icon = document.createElement("i");
     icon.setAttribute("data-lucide", value ? "pause" : "play");
     b.replaceChildren(icon);
@@ -28701,7 +28701,7 @@ function fallback3D(error) {
     front.classList.remove("finish-gold", "finish-silver", "finish-pearl", "finish-original");
     front.classList.add("finish-" + value);
     document.querySelectorAll("[data-finish]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.finish === value)));
-    $("finish-name").textContent = { pearl: "珠光", silver: "银箔", gold: "烫金", original: "原画" }[value];
+    $("finish-name").textContent = { pearl: "パール", silver: "シルバー", gold: "金箔", original: "原画" }[value];
     $("foil").disabled = value === "original";
   };
   $("info").disabled = false;
@@ -28747,7 +28747,7 @@ function fallback3D(error) {
   }
   applyLayers();
   fallbackFinish(config.appearance?.finish || "gold");
-  notice("浏览器未开启 WebGL：已用轻量 3D 模式显示（层次保留）");
+  notice("ブラウザで WebGL が無効です。軽量 3D モードで表示しています（奥行きは保持）");
   window.__holo = { ready: false, error: String(error), fallback3d: true };
 }
 function resize() {
@@ -28769,8 +28769,8 @@ function setAuto(value) {
   if (!button)
     return;
   button.setAttribute("aria-pressed", String(auto));
-  button.setAttribute("aria-label", auto ? "暂停旋转" : "自动旋转");
-  button.title = auto ? "暂停旋转" : "自动旋转";
+  button.setAttribute("aria-label", auto ? "回転を一時停止" : "自動回転");
+  button.title = auto ? "回転を一時停止" : "自動回転";
   button.replaceChildren();
   const icon = document.createElement("i");
   icon.setAttribute("data-lucide", auto ? "pause" : "play");
@@ -28782,9 +28782,9 @@ function setFinish(value) {
   uniforms.uFinish.value = { pearl: 0, silver: 1, original: 2, gold: 3 }[value] ?? 3;
   document.querySelectorAll("[data-finish]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.finish === value)));
   $("finish-name").textContent = {
-    pearl: "珠光",
-    silver: "银箔",
-    gold: "烫金",
+    pearl: "パール",
+    silver: "シルバー",
+    gold: "金箔",
     original: "原画"
   }[value];
   $("foil").disabled = value === "original";
@@ -28953,7 +28953,7 @@ function setupControls() {
   renderer.domElement.addEventListener("webglcontextlost", (e) => {
     e.preventDefault();
     renderer.setAnimationLoop(null);
-    notice("图形显示已暂停，请刷新页面恢复");
+    notice("描画が一時停止しました。ページを再読み込みしてください");
   });
 }
 function saveCard() {
@@ -28981,7 +28981,7 @@ function saveCard() {
       link.download = (config.title || "art-card") + "-" + (flipped ? "back" : "front") + ".png";
       link.href = renderer.domElement.toDataURL("image/png");
       link.click();
-      notice("卡片图片已保存");
+      notice("カード画像を保存しました");
     } finally {
       Object.assign(camera, bounds);
       camera.updateProjectionMatrix();
@@ -28991,7 +28991,7 @@ function saveCard() {
     }
   } catch (error) {
     console.error(error);
-    notice("图片未能保存，请重试");
+    notice("画像を保存できませんでした。再試行してください");
   }
 }
 function animate(now) {
@@ -29024,7 +29024,7 @@ var fail = (message) => {
   const msg = document.createElement("span");
   msg.textContent = message;
   const retry = document.createElement("button");
-  retry.textContent = "重新加载";
+  retry.textContent = "再読み込み";
   retry.onclick = () => location.reload();
   loading?.append(msg, retry);
   window.__holo = { ready: false, error: message };
@@ -29035,11 +29035,11 @@ Promise.race([
   init().then(() => {
     settled = true;
   }),
-  new Promise((_, reject) => setTimeout(() => reject(new Error("卡片加载超时，请检查网络或刷新重试")), LOAD_TIMEOUT_MS))
+  new Promise((_, reject) => setTimeout(() => reject(new Error("カードの読み込みがタイムアウトしました。ネットワークを確認するか再読み込みしてください")), LOAD_TIMEOUT_MS))
 ]).catch((error) => {
   if (settled)
     return;
   console.error(error);
-  fail(`作品暂时无法加载。
+  fail(`作品を読み込めませんでした。
 ` + error.message);
 });

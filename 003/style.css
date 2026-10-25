@@ -886,3 +886,6 @@ dialog dd {
   .stage { inset: 3% 3% 2%; }
   .artwork-bar { margin-top: 8px; }
 }
+
+/* No visible focus frame around the card stage (shows up when tilting on touch) */
+.stage, .stage:focus, .stage:focus-visible { outline: none !important; box-shadow: none !important; -webkit-tap-highlight-color: transparent; }

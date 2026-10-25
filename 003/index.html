@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="ja">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,19 +11,19 @@
   </head>
   <body>
     <header class="masthead">
-      <a class="wordmark" href="./" aria-label="白相首页"
+      <a class="wordmark" href="./" aria-label="白相ホーム"
         ><span class="wordmark-cn">白相<span class="brand-dot"></span></span
         ><span class="wordmark-en">WHITE ATELIER</span></a
       >
       <span class="collection-label"
-        >个人典藏 <span>/</span> <span id="edition">STUDY 001</span></span
+        >個人コレクション <span>/</span> <span id="edition">STUDY 001</span></span
       >
       <div class="header-actions">
         <button
           class="icon-button"
           id="info"
-          aria-label="作品信息"
-          title="作品信息"
+          aria-label="作品情報"
+          title="作品情報"
           disabled
         >
           <i data-lucide="info"></i>
@@ -31,8 +31,8 @@
         <button
           class="icon-button save-button"
           id="save"
-          aria-label="保存卡片图片"
-          title="保存卡片图片"
+          aria-label="カード画像を保存"
+          title="カード画像を保存"
           disabled
         >
           <i data-lucide="download"></i>
@@ -40,16 +40,16 @@
       </div>
     </header>
     <main>
-      <section class="gallery" aria-label="卡片展台">
+      <section class="gallery" aria-label="カードギャラリー">
         <div
           class="stage"
           id="stage"
           tabindex="0"
           role="group"
-          aria-label="可旋转的全息卡片"
+          aria-label="回転可能なホログラフィックカード"
         >
           <div id="loading" class="loading" role="status">
-            <span class="loading-line"></span><span>正在装裱作品</span>
+            <span class="loading-line"></span><span>作品を装幀しています</span>
           </div>
         </div>
         <div class="stage-note" aria-hidden="true">
@@ -57,37 +57,37 @@
         </div>
         <div class="parameter-panel" id="parameter-panel">
           <div class="panel-heading">
-            <span>景深与构图</span>
+            <span>奥行きと構図</span>
           </div>
           <label class="range-row" for="scale"
-            ><span>画面比例</span><output id="scale-value"></output
+            ><span>画面スケール</span><output id="scale-value"></output
             ><input id="scale" type="range" min="0.95" max="1.35" step="0.01"
           /></label>
           <label class="range-row" for="depth"
-            ><span>画面景深</span><output id="depth-value"></output
+            ><span>メイン奥行き</span><output id="depth-value"></output
             ><input id="depth" type="range" min="-0.45" max="0.45" step="0.01"
           /></label>
           <label class="range-row" for="fx-depth"
-            ><span>特效景深</span><output id="fx-depth-value"></output
+            ><span>エフェクト奥行き</span><output id="fx-depth-value"></output
             ><input id="fx-depth" type="range" min="-0.3" max="0.9" step="0.01"
           /></label>
           <label class="range-row" for="bg-depth"
-            ><span>底纹景深</span><output id="bg-depth-value"></output
+            ><span>背景奥行き</span><output id="bg-depth-value"></output
             ><input id="bg-depth" type="range" min="-0.4" max="0.4" step="0.01"
           /></label>
         </div>
       </section>
-      <section class="artwork-bar" aria-label="作品与材质">
+      <section class="artwork-bar" aria-label="作品と質感">
         <div class="artwork-title">
           <div class="title-line">
             <h1 id="card-title">BOND</h1>
             <span id="subtitle">共生</span>
           </div>
-          <p id="description">光与影，彼此相依。</p>
+          <p id="description">視点で揺れる星の光</p>
         </div>
-        <div class="face-picker" role="group" aria-label="卡片朝向">
-          <button id="front" aria-pressed="true" disabled>正面</button
-          ><button id="back" aria-pressed="false" disabled>背面</button>
+        <div class="face-picker" role="group" aria-label="カードの向き">
+          <button id="front" aria-pressed="true" disabled>表面</button
+          ><button id="back" aria-pressed="false" disabled>裏面</button>
         </div>
         <div class="finish-cluster">
           <button
@@ -96,37 +96,37 @@
             type="button"
             aria-controls="parameter-panel"
             aria-expanded="true"
-            aria-label="显示或隐藏景深调整"
-            title="显示或隐藏景深调整"
+            aria-label="奥行き調整の表示／非表示"
+            title="奥行き調整の表示／非表示"
           >
-            <i data-lucide="sliders-horizontal"></i><span>景深调整</span>
+            <i data-lucide="sliders-horizontal"></i><span>奥行き調整</span>
           </button>
           <div class="finish-control">
           <div class="finish-heading">
-            <span>卡面质感</span>
-            <div class="swatches" role="group" aria-label="卡面材质">
+            <span>カード質感</span>
+            <div class="swatches" role="group" aria-label="カード面の質感">
               <button
                 class="swatch pearl"
                 data-finish="pearl"
                 aria-pressed="true"
-                aria-label="珠光"
-                title="珠光"
+                aria-label="パール"
+                title="パール"
                 disabled
               ></button
               ><button
                 class="swatch silver"
                 data-finish="silver"
                 aria-pressed="false"
-                aria-label="银箔"
-                title="银箔"
+                aria-label="シルバー"
+                title="シルバー"
                 disabled
               ></button
               ><button
                 class="swatch gold"
                 data-finish="gold"
                 aria-pressed="true"
-                aria-label="烫金"
-                title="烫金"
+                aria-label="金箔"
+                title="金箔"
                 disabled
               ></button
               ><button
@@ -138,10 +138,10 @@
                 disabled
               ></button>
             </div>
-            <span id="finish-name">烫金</span>
+            <span id="finish-name">金箔</span>
           </div>
           <label class="foil-row" for="foil"
-            ><span>光泽</span
+            ><span>光沢</span
             ><input
               id="foil"
               type="range"
@@ -157,14 +157,14 @@
       </section>
     </main>
     <footer class="footer">
-      <span>光影之间，自有回响。</span><span>PERSONAL ART COLLECTION</span>
+      <span>光と影のあいだに、響きがある。</span><span>PERSONAL ART COLLECTION</span>
     </footer>
     <dialog id="about" aria-labelledby="about-title">
       <button
         id="close-about"
         class="icon-button modal-close"
-        aria-label="关闭作品信息"
-        title="关闭作品信息"
+        aria-label="閉じる"
+        title="閉じる"
       >
         <i data-lucide="x"></i>
       </button>
@@ -173,15 +173,15 @@
       <p id="about-description"></p>
       <dl>
         <div>
-          <dt>来源</dt>
-          <dd>用户提供的参考作品</dd>
+          <dt>出典</dt>
+          <dd>ユーザー提供の参考作品</dd>
         </div>
         <div>
-          <dt>呈现</dt>
-          <dd>个人艺术卡片习作</dd>
+          <dt>形式</dt>
+          <dd>個人アートカード習作</dd>
         </div>
         <div>
-          <dt>编号</dt>
+          <dt>番号</dt>
           <dd id="about-edition">STUDY 001</dd>
         </div>
       </dl>
